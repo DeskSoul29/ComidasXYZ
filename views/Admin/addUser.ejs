@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" >
+  <head>
+    <%- include('../tools/head'); %>
+  </head>
+  <body>
+    <main>
+      <div class="container px-4 py-5" id="featured-3">
+        <div style="text-align: right">
+          <a href="/homeadmin/user">Volver</a>
+        </div>
+        <div style='text-align:right'>
+          <a href="/logout">Cerrar Sesion</a>
+        </div>
+        <h2 class="pb-2 border-bottom">Agregar Usuario</h2>
+          
+        <form class="row g-3" action="/homeadmin/user/add" method="POST">
+          <div class="feature col">
+            <div class="mb-4 row">
+                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="name" name="name" >
+                </div>
+              </div>
+              <div class="mb-4 row">
+                <label for="mail" class="col-sm-2 col-form-label">Correo</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="mail" name="mail">
+                </div>
+              </div>
+              <div class="mb-4 row">
+                <label for="pass" class="col-sm-2 col-form-label">Contraseña</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="pass" name="pass">
+                </div>
+              </div>
+              <div class="mb-4 row">
+                <label for="cost" class="col-sm-2 col-form-label">Rol</label>
+                <div class="col-sm-10">
+                  <select class="form-select" name="role">
+                    <option value="admin" selected>Administrador</option>
+                    <option value="cajero">Cajero</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Registrar Usuario</button>
+              </div>
+
+          </div>
+        </form>
+          
+        </div>
+
+    </main>
+ <!-- Alert -->
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ <% if(typeof alert !="undefined" ) { %>
+ <script type="text/JavaScript">
+   Swal.fire({
+           title: '<%= alert[0].alertTitle %>',
+           text:'<%= alert[0].alertMessage %>',
+           icon:'<%= alert[0].alertIcon %>',
+           showConfirmButton: <%= alert[0].showConfirmButton %>,
+           timer: <%= alert[0].timer %>
+         }).then(()=>{
+           window.location = '<%= alert[0].ruta %>'
+         })
+       </script>
+ <% } %>
+  </body>
+</html>
